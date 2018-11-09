@@ -28,7 +28,7 @@ functions:
           type: 'Quote'
           rate: 3
     - schedule:
-        rate: rate(1 days)
+        rate: rate(1 day)
         enabled: true
         input:
           type: 'Joke'
