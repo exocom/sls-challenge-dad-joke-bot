@@ -23,7 +23,7 @@ export class LambdaUtil {
   apiResponseJson<T>({statusCode = 200, body = null, headers = this._headers}: ApiJsonResponse<T>): APIGatewayProxyResult {
     return {
       statusCode,
-      body: body ? JSON.stringify(body) : "",
+      body: body ? JSON.stringify(body) : '',
       headers
     };
   }
@@ -47,19 +47,19 @@ export const buildIAMPolicy = (userId, effect, resource, context) => {
         {
           Action: 'execute-api:Invoke',
           Effect: effect,
-          Resource: resource,
-        },
-      ],
+          Resource: resource
+        }
+      ]
     },
-    context,
+    context
   };
 
   return policy;
 };
 
 
-export type ScheduleEventHandler = (
-  event: ScheduledEvent,
+export type ScheduleEventHandler<T = ScheduledEvent> = (
+  event: T,
   context: Context
 ) => void;
 
@@ -98,6 +98,7 @@ export interface ContactFlowCustomerEndpoint {
   Type: string;
 
 }
+
 export interface ContactFlowSystemEndpoint {
   Address: string;
   Type: string;
@@ -113,7 +114,7 @@ export interface ContactFlowContactData {
   InstanceARN: string;
   PreviousContactId: string;
   Queue: string;
-  SystemEndpoint:ContactFlowSystemEndpoint;
+  SystemEndpoint: ContactFlowSystemEndpoint;
 }
 
 export interface ContactFlowDetails {
@@ -121,7 +122,7 @@ export interface ContactFlowDetails {
   Parameters: any;
 }
 
-export interface  ContactFlowEvent {
+export interface ContactFlowEvent {
   Details: ContactFlowDetails;
   Name: string;
 }

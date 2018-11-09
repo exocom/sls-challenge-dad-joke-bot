@@ -12,13 +12,25 @@ provider:
   stage: ${file(../serverless.yml):provider.stage}
 
   environment:
-#    CHANGE_VALUE: ${env:CHANGE_VALUE, file(../serverless.yml):provider.environment.CHANGE_VALUE}
+    TWITTER_CONSUMER_KEY: ${env:TWITTER_CONSUMER_KEY, file(../serverless.yml):provider.environment.TWITTER_CONSUMER_KEY}
+    TWITTER_CONSUMER_SECRET: ${env:TWITTER_CONSUMER_SECRET, file(../serverless.yml):provider.environment.TWITTER_CONSUMER_SECRET}
+    TWITTER_ACCESS_TOKEN_KEY: ${env:TWITTER_ACCESS_TOKEN_KEY, file(../serverless.yml):provider.environment.TWITTER_ACCESS_TOKEN_KEY}
+    TWITTER_ACCESS_TOKEN_SECRET: ${env:TWITTER_ACCESS_TOKEN_SECRET, file(../serverless.yml):provider.environment.TWITTER_ACCESS_TOKEN_SECRET}
 
 functions:
   handler:
     handler: src/handler.handler
     events:
-    - schedule: rate(10 minutes)
+    - schedule:
+      rate: rate(3 hours)
+        enabled: true
+        input:
+          type: 'Quote'
+    - schedule:
+        rate: rate(1 days)
+        enabled: true
+        input:
+          type: 'Joke'
 
 custom:
   user: ${file(../serverless.yml):custom.user}
