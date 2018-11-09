@@ -26,6 +26,7 @@ functions:
         enabled: true
         input:
           type: 'Quote'
+          rate: 3
     - schedule:
         rate: rate(1 days)
         enabled: true
