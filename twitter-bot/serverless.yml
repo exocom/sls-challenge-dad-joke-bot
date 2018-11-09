@@ -19,10 +19,10 @@ provider:
 
 functions:
   handler:
-    handler: src/handler.handler
+    handler: src/handler.tweet
     events:
     - schedule:
-      rate: rate(3 hours)
+        rate: rate(3 hours)
         enabled: true
         input:
           type: 'Quote'
