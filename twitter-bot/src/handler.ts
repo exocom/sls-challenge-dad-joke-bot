@@ -37,7 +37,7 @@ export const tweet: ScheduleEventHandler<Event> = async (event) => {
     };
     const {joke} = await request(options);
     console.log(joke);
-    const tweet = await client.post('statuses/update', {status: joke});
+    const tweet = await client.post('statuses/update', {status: joke.replace(/([^a-z0-9])?$/i, ', Baby$1')});
     console.log(tweet);
   }
 };
