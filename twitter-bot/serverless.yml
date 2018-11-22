@@ -10,6 +10,8 @@ provider:
   profile: ${file(../serverless.yml):provider.profile}
   region: ${file(../serverless.yml):provider.region}
   stage: ${file(../serverless.yml):provider.stage}
+  timeout: 5
+  memorySize: 128
 
   environment:
     TWITTER_CONSUMER_KEY: ${env:TWITTER_CONSUMER_KEY, file(../serverless.yml):provider.environment.TWITTER_CONSUMER_KEY}

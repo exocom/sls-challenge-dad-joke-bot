@@ -40,4 +40,4 @@ export const quotes = [
   'Search me.',
   'For the time being... let\'s dance!',
   'Yaeah!'
-]
+];
